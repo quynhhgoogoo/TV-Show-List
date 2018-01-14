@@ -25,7 +25,7 @@ function postEmmaWatson(){
  var groupName3=document.getElementById("EmmaWatson.nationality");
  
  //var jsonData = '{"name":' + JSON.stringify(groupName.value) + '}';
- var jsonData1 ='{"id":' + JSON.stringify(groupName1.value) + '} {"date_of_birth":' + JSON.stringify(groupName2.value) + '} + {"nationality":' + JSON.stringify(groupName3.value) + '} +';
+ var jsonData1 ='{"id":' + JSON.stringify(groupName1.value) + ',"date_of_birth":' + JSON.stringify(groupName2.value) + ',"nationality":' + JSON.stringify(groupName3.value) + '}';
  
  var request = new XMLHttpRequest();
  request.open("POST", "http://localhost:8000/EmmaWatson/", false);
@@ -45,7 +45,7 @@ function postJustinBieber(){
  var groupName8=document.getElementById("JustinBieber.mother_name");
  
  //var jsonData2 ='{"id":' + JSON.stringify(groupName4.value) + '} +{"date_of_birth":' + JSON.stringify(groupName5.value) + '} + {"alternative_name":' + JSON.stringify(groupName6.value) + '} +{"sibblings_name":' + JSON.stringify(groupName7.value) + '} +{"mother_name":' + JSON.stringify(groupName8.value) + '} +';
- var jsonData2 = '{"id":' + JSON.stringify(groupName4.value) + '{"date_of_birth":' + JSON.stringify(groupName5.value) + '{"alternative_name":' + JSON.stringify(groupName6.value) + '{"sibblings_name":' + JSON.stringify(groupName7.value) + '{"mother_name":' + JSON.stringify(groupName5.value) + '}';
+ var jsonData2 = '{"id":' + JSON.stringify(groupName4.value) + ',"date_of_birth":' + JSON.stringify(groupName5.value) + ',"alternative_name":' + JSON.stringify(groupName6.value) + ',"sibblings_name":' + JSON.stringify(groupName7.value) + ',"mother_name":' + JSON.stringify(groupName5.value) + '}';
  var request = new XMLHttpRequest();
  request.open("POST", "http://localhost:8000/JustinBieber/", false);
  request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
