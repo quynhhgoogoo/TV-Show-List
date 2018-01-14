@@ -1,0 +1,69 @@
+Group name:<br>
+<input type="text" id="group"><br>
+
+Emma Watson<br>
+ID :<input type="text" id="EmmaWatson.id"><br>
+Date of birth:<input type="text" id="EmmaWatson.date_of_birth"><br>
+Nationality:<input type="text" id="EmmaWatson.nationality"><br>
+<br>
+
+Justin Bieber<br>
+ID :<input type="text" id="JustinBieber.id"><br>
+Date of birth:<input type="text" id="JustinBieber.date_of_birth"><br>
+Alternative Name:<input type="text" id="JustinBieber.alternative_name"><br>
+Sibblings name :<input type="text" id="JustinBieber.sibblings_name"><br>
+Mother's name:<input type="text" id="JustinBieber.mother_name"><br>
+
+<button onClick="postEmmaWatson()">Add group</button>
+<button onClick="postJustinBieber()">Add group</button>
+<script>
+
+function postEmmaWatson(){
+ //var groupName=document.getElementById("group");
+ var groupName1=document.getElementById("EmmaWatson.id");
+ var groupName2=document.getElementById("EmmaWatson.date_of_birth");
+ var groupName3=document.getElementById("EmmaWatson.nationality");
+ 
+ //var jsonData = '{"name":' + JSON.stringify(groupName.value) + '}';
+ var jsonData1 ='{"id":' + JSON.stringify(groupName1.value) + '} {"date_of_birth":' + JSON.stringify(groupName2.value) + '} + {"nationality":' + JSON.stringify(groupName3.value) + '} +';
+ 
+ var request = new XMLHttpRequest();
+ request.open("POST", "http://localhost:8000/EmmaWatson/", false);
+ request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+ request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+ request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+ request.send(jsonData1);
+ var array = JSON.parse(request.responseText);
+ console.log(array);
+}
+
+function postJustinBieber(){
+ var groupName4=document.getElementById("JustinBieber.id");
+ var groupName5=document.getElementById("JustinBieber.date_of_birth");
+ var groupName6=document.getElementById("JustinBieber.alternative_name");
+ var groupName7=document.getElementById("JustinBieber.sibblings_name");
+ var groupName8=document.getElementById("JustinBieber.mother_name");
+ 
+ //var jsonData2 ='{"id":' + JSON.stringify(groupName4.value) + '} +{"date_of_birth":' + JSON.stringify(groupName5.value) + '} + {"alternative_name":' + JSON.stringify(groupName6.value) + '} +{"sibblings_name":' + JSON.stringify(groupName7.value) + '} +{"mother_name":' + JSON.stringify(groupName8.value) + '} +';
+ var jsonData2 = '{"id":' + JSON.stringify(groupName4.value) + '{"date_of_birth":' + JSON.stringify(groupName5.value) + '{"alternative_name":' + JSON.stringify(groupName6.value) + '{"sibblings_name":' + JSON.stringify(groupName7.value) + '{"mother_name":' + JSON.stringify(groupName5.value) + '}';
+ var request = new XMLHttpRequest();
+ request.open("POST", "http://localhost:8000/JustinBieber/", false);
+ request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+ request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+ request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+ request.send(jsonData2); 
+ var array = JSON.parse(request.responseText);
+ console.log(array);
+}
+
+function readCookie(name) {
+ var nameEQ = encodeURIComponent(name) + "=";
+ var ca = document.cookie.split(';');
+ for (var i = 0; i < ca.length; i++) {
+ var c = ca[i];
+ while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+ if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+ }
+ return null;
+}
+</script>
