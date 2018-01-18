@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, JustinBieberSerializer, EmmaWatsonSerializer
-from .models import JustinBieber, EmmaWatson
+from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, IdolSerializer, TvshowSerializer
+from .models import Idol, Tvshow
 
 class UserViewSet(viewsets.ModelViewSet):
     """ 
@@ -17,16 +17,16 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 	
-class JustinBieberViewSet(viewsets.ModelViewSet):
+class IdolViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = JustinBieber.objects.all()
-    serializer_class = JustinBieberSerializer
+    queryset = Idol.objects.all()
+    serializer_class = IdolSerializer
 	
-class EmmaWatsonViewSet(viewsets.ModelViewSet):
+class TvshowViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = EmmaWatson.objects.all()
-    serializer_class = EmmaWatsonSerializer
+    queryset = Tvshow.objects.all()
+    serializer_class = TvshowSerializer

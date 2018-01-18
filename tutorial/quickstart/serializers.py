@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from .models import JustinBieber, EmmaWatson
+from .models import Idol, Tvshow
 from rest_framework import serializers
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -11,12 +11,12 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ('url', 'name')
-class JustinBieberSerializer(serializers.HyperlinkedModelSerializer):
+class IdolSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-		model = JustinBieber
-		fields = ('url', 'date_of_birth', 'alternative_name', 'sibblings_name', 'mother_name')
+		model = Idol
+		fields = ('url', 'id', 'name')
 
-class EmmaWatsonSerializer(serializers.HyperlinkedModelSerializer):
+class TvshowSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-		model = EmmaWatson
-		fields = ('url', 'date_of_birth', 'nationality')
+		model = Tvshow
+		fields = ('url', 'id', 'name')

@@ -1,34 +1,28 @@
 Group name:<br>
 <input type="text" id="group"><br>
 
-Emma Watson<br>
-ID :<input type="text" id="EmmaWatson.id"><br>
-Date of birth:<input type="text" id="EmmaWatson.date_of_birth"><br>
-Nationality:<input type="text" id="EmmaWatson.nationality"><br>
+Idols<br>
+ID :<input type="text" id="Idol.id"><br>
+Name:<input type="text" id="Idol.name"><br>
 <br>
 
-Justin Bieber<br>
-ID :<input type="text" id="JustinBieber.id"><br>
-Date of birth:<input type="text" id="JustinBieber.date_of_birth"><br>
-Alternative Name:<input type="text" id="JustinBieber.alternative_name"><br>
-Sibblings name :<input type="text" id="JustinBieber.sibblings_name"><br>
-Mother's name:<input type="text" id="JustinBieber.mother_name"><br>
+TV Shows<br>
+ID :<input type="text" id="Tvshow.id"><br>
+Name:<input type="text" id="Tvshow.name"><br>
 
-<button onClick="postEmmaWatson()">Add group</button>
-<button onClick="postJustinBieber()">Add group</button>
+<button onClick="postIdol()">Add group</button>
+<button onClick="postTvshow()">Add group</button>
 <script>
 
-function postEmmaWatson(){
+function postIdol(){
  //var groupName=document.getElementById("group");
- var groupName1=document.getElementById("EmmaWatson.id");
- var groupName2=document.getElementById("EmmaWatson.date_of_birth");
- var groupName3=document.getElementById("EmmaWatson.nationality");
- 
+ var groupName1=document.getElementById("Idol.id");
+ var groupName2=document.getElementById("Idol.name");
  //var jsonData = '{"name":' + JSON.stringify(groupName.value) + '}';
- var jsonData1 ='{"id":' + JSON.stringify(groupName1.value) + ',"date_of_birth":' + JSON.stringify(groupName2.value) + ',"nationality":' + JSON.stringify(groupName3.value) + '}';
- 
+ var jsonData1 ='{"id":' + JSON.stringify(groupName1.value) + ',"name":' + JSON.stringify(groupName2.value) + '}';
+ console.log(jsonData1);
  var request = new XMLHttpRequest();
- request.open("POST", "http://localhost:8000/EmmaWatson/", false);
+ request.open("POST", "http://localhost:8000/idols/", false);
  request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
  request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
  request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -37,17 +31,13 @@ function postEmmaWatson(){
  console.log(array);
 }
 
-function postJustinBieber(){
- var groupName4=document.getElementById("JustinBieber.id");
- var groupName5=document.getElementById("JustinBieber.date_of_birth");
- var groupName6=document.getElementById("JustinBieber.alternative_name");
- var groupName7=document.getElementById("JustinBieber.sibblings_name");
- var groupName8=document.getElementById("JustinBieber.mother_name");
+function postTvshow(){
+ var groupName3=document.getElementById("Tvshow.id");
+ var groupName4=document.getElementById("Tvshow.name");
  
- //var jsonData2 ='{"id":' + JSON.stringify(groupName4.value) + '} +{"date_of_birth":' + JSON.stringify(groupName5.value) + '} + {"alternative_name":' + JSON.stringify(groupName6.value) + '} +{"sibblings_name":' + JSON.stringify(groupName7.value) + '} +{"mother_name":' + JSON.stringify(groupName8.value) + '} +';
- var jsonData2 = '{"id":' + JSON.stringify(groupName4.value) + ',"date_of_birth":' + JSON.stringify(groupName5.value) + ',"alternative_name":' + JSON.stringify(groupName6.value) + ',"sibblings_name":' + JSON.stringify(groupName7.value) + ',"mother_name":' + JSON.stringify(groupName5.value) + '}';
+ var jsonData2 = '{"id":' + JSON.stringify(groupName3.value) + ',"name":' + JSON.stringify(groupName4.value) + '}';
  var request = new XMLHttpRequest();
- request.open("POST", "http://localhost:8000/JustinBieber/", false);
+ request.open("POST", "http://localhost:8000/tvshows/", false);
  request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
  request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
  request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");

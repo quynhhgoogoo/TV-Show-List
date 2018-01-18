@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 # Register your models here.
-from .models import JustinBieber, EmmaWatson
+from .models import Idol, Tvshow
 
-admin.site.register(JustinBieber)
-admin.site.register(EmmaWatson)
+admin.site.register(Idol)
+admin.site.register(Tvshow)
