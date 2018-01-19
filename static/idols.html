@@ -1,16 +1,51 @@
+<head>
+<style>
+h1 {
+    font-size: 30px;
+}
+
+ol {
+    background: #ff9999;
+    padding: 20px;
+}
+
+ol li {
+    background: #ffe5e5;
+    padding: 5px;
+    margin-left: 35px;
+}
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+</style>
+</head>
 <body>
-Idols :<br>
-ID :<input type="text" id="id"><br>
+<ol>
+<h1>IDOLS :</h1>
+ID :<input type="text" id="id"><br><br>
 Name:<input type="text" id="name"><br>
 <br>
 <button onClick="post_idol()">Add group</button>
 
-<br>Delete Idols Info :<br>
+<br><br><h1>MODIFY YOUR IDOL INFORMATIONS :</h1>
 <select id="sel"></select>
+<input type="text" id="newname">
 <button onclick="delete_idol()">DELETE</button>
-
-<br>Edit idols info:<br>
-<input type="text" id="newname"><button onClick="put_idol()">EDIT</button>
+<button onClick="put_idol()">EDIT</button>
+<br><br>
+<p>Click the link below to modify your TV Shows Information</p>
+<a href="http://localhost:8000/static/tvshows.html" target="_blank">TV Shows</a>
+</ol>
 </body>
 
 <script>
