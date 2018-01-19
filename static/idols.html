@@ -1,7 +1,43 @@
 <head>
 <style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+    background-color: #ffe5e5;
+    padding: 25px;
+    text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #ff9999;
+}
+
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #ff9999;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: white;
+}
 h1 {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 ol {
@@ -30,6 +66,13 @@ a:hover, a:active {
 </style>
 </head>
 <body>
+<div class="header">
+  <h1>WELCOME TO OUR PAGE</h1>
+</div>
+
+<div class="topnav">
+  <a href="http://localhost:8000/static/idols.html">Idols</a>
+  <a href="http://localhost:8000/static/tvshows.html">TV Shows</a>
 <ol>
 <h1>IDOLS :</h1>
 ID :<input type="text" id="id"><br><br>
@@ -43,8 +86,6 @@ Name:<input type="text" id="name"><br>
 <button onclick="delete_idol()">DELETE</button>
 <button onClick="put_idol()">EDIT</button>
 <br><br>
-<p>Click the link below to modify your TV Shows Information</p>
-<a href="http://localhost:8000/static/tvshows.html" target="_blank">TV Shows</a>
 </ol>
 </body>
 
