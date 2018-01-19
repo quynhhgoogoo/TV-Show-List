@@ -1,0 +1,95 @@
+<body>
+TV Shows :<br>
+ID :<input type="text" id="id"><br>
+Name:<input type="text" id="name"><br>
+<br>
+<button onClick="post_tvshow()">Add group</button>
+
+<br>Delete TV Shows Info :<br>
+<select id="sel"></select>
+<button onclick="delete_tvshow()">DELETE</button>
+
+<br>Edit TV Shows Info :<br>
+<input type="text" id="newname"><button onClick="put_tvshow()">EDIT</button>
+</body>
+
+<script>
+
+function get_tvshow(){
+	var name=document.getElementById("id");
+	var name=document.getElementById("name");
+	var jsonData = '{"id":' + JSON.stringify(id.value) + ',"name":' + JSON.stringify(name.value) + '}';
+	var request = new XMLHttpRequest();
+	request.open("GET", "http://localhost:8000/tvshows/", false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData);
+	array = JSON.parse(request.responseText);
+	var selectElement = document.getElementById("sel");
+	var i, options="";
+	for(i = 0; i < array.length; i++)
+	{
+		options = options + "<option>" + array[i].name + "</option>";
+	}
+	selectElement.innerHTML = options;
+	console.log(array);
+};
+
+get_tvshow();
+function put_tvshow(){
+	//var id=document.getElementById("id");
+	var name=document.getElementById("newname");
+	var i = document.getElementById("sel").selectedIndex;
+	var request = new XMLHttpRequest();
+	var url=""+array[i].url;
+	var id = array[i].id;
+	var jsonData = '{"id":' + JSON.stringify(id) + ',"name":' + JSON.stringify(name.value) + '}';
+	request.open("PUT", url, false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData);
+	get_tvshow();
+};
+
+function delete_tvshow(){
+	var i = document.getElementById("sel").selectedIndex;
+	var request = new XMLHttpRequest();
+	var name=array[i].name;
+	var url=""+array[i].url;
+	var jsonData = '{"id":' + JSON.stringify(id.value) + ',"name":' + JSON.stringify(name.value) + '}';
+	request.open("DELETE", url, false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData);
+	get_idol();
+};
+ 
+function post_tvshow(){
+	var id=document.getElementById("id");
+	var name=document.getElementById("name");
+	var jsonData = '{"id":' + JSON.stringify(id.value) + ',"name":' + JSON.stringify(name.value) + '}';
+	var request = new XMLHttpRequest();
+	request.open("POST", "http://localhost:8000/tvshows/", false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData); 
+	var array = JSON.parse(request.responseText);
+	get_idol();
+	console.log(array);
+};
+function readCookie(name) {
+ var nameEQ = encodeURIComponent(name) + "=";
+ var ca = document.cookie.split(';');
+ for (var i = 0; i < ca.length; i++) {
+ var c = ca[i];
+ while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+ if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+ }
+ return null;
+};
+
+</script>
